@@ -1,0 +1,178 @@
+body{
+    background-image: url("images/stars1.jpg");
+}
+
+#topNavBar{width: 100%;}
+.navbar{border-radius: 0;}
+
+.navbar-brand{ font-family: Georgia, cursive;}
+
+.container-fluid {
+    font-family: Georgia, cursive;
+    margin-top: -7.32vw;
+}
+
+#label{color: whitesmoke;}
+
+#register{
+    margin: 1.46vw 0 72vw 0;
+    width: 29.3vw;
+    height: 29.3vw;
+    background: white;
+}
+
+#song_page{
+    margin: auto;
+    min-height: 35vw;
+    width: 80vw;
+    background-color: #FBF9F9;
+    border-radius: .3vw;
+    overflow: visible;
+}
+
+#song_container{
+    margin: -32vw 0 0 35vw;
+    height: 35vw;
+    width: 60vw;
+    background-color: #FBF9F9;
+    border-radius: .3vw;
+    overflow: auto;
+}
+
+.video_container{
+    margin: 3.67vw 2.2vw 0 79vw;
+    background-color: #FBF9F9;
+    overflow: auto;
+    height: 35vw;
+    width: 29vw;
+}
+
+#btn{  margin-left: 47.6vw;
+color: white;
+}
+
+#song_btn{ margin : .73vw 0 0 65vw;  }
+
+#search_btn{font-size: 1.1vw;}
+
+#player_1{
+    margin-left: 25vw;
+    display: inline-table;
+    margin-top: -1.46vw;
+}
+
+#player_2{
+    margin-left: 29vw;
+    display: inline-table;
+    margin-top: -.73vw;
+}
+
+#add_container{
+    padding: 1.64vw;
+    width: 44vw;
+    min-height: 22vw;
+    background-color: #5bc0de;
+    margin:auto;
+    font-family: Georgia,cursive;
+    font-size: 1.17vw;
+    border-radius:4px;
+}
+
+#user_profile{
+    margin: auto;
+    min-height: 43vw;
+    width: 62.2vw;
+    background-color:#FBF9F9;
+    border-radius: 0.3vw;
+}
+
+p.heading{
+    background: #0e90d2;
+    color: white;
+    height: 2.2vw;
+    margin: 1.46vw 0 0 0;
+    font-family: Georgia,cursive;
+    font-style: italic;
+    padding-left: .73vw;
+    font-size: 1.4vw;
+}
+
+p.border{
+    height: .11vw;
+    margin: .73vw .73vw 0 1.1vw;
+    background: #b3b3b3;
+}
+
+li{  list-style: square;  }
+
+input{font-size: 1vw;}
+button{font-size: 1vw;}
+
+a{
+    text-decoration:none;
+    color:black;
+    font-weight: lighter;
+    font-size: 1vw;
+}
+
+a:hover{color: #0044cc ;text-decoration:none; }
+
+p.details{
+    font-family: Georgia,cursive;
+    font-style: italic;
+    font-size: 1.32vw;
+}
+
+h4.song_title{
+    font-family: Georgia,cursive;
+    font-style: italic;
+    font-size: 1.17vw;
+    padding-left: 1.46vw;
+    list-style: disc;
+}
+
+h2.title{
+    font-family: Georgia,cursive;
+    font-style: italic;
+    font-size: 1.83vw;
+}
+
+h4.song{
+    display: inline;
+    float: left;
+    margin-top:-1.83vw;
+    font-family: Georgia,cursive;
+    font-style: italic;
+    font-size: 1.17vw;
+}
+
+h4.album{
+    font-family: Georgia,cursive;
+    font-style: italic;
+    font-size: 1.17vw;
+}
+
+h3.error_msg{
+    color: hotpink;
+    font-style:italic;
+    margin: -.73vw 0 0 .73vw;
+    font-size: 2vw;
+    font-family: Georgia,cursive;
+}
+
+.song_logo .img-responsive{
+    height: 16vw;
+    width: 21vw;
+    border: .15vw solid black;
+    margin: -7vw 0 0 5vw ;
+}
+
+.thumbnail .img-responsive{
+    height: 22vw;
+    width: 30vw;
+}
+
+.thumbnail .user_pic{
+    height: 18vw;
+    width: 20vw;
+}

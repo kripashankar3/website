@@ -1,0 +1,51 @@
+{% extends 'music/base.html' %}
+
+{% block title%}Videos{% endblock %}
+{% block body %}
+    <button class="btn btn-sm btn-primary" style="margin : 0 0 0 1220px;">
+        <a href="{% url 'music:add-video'%}" style="color: white;"><span class="glyphicon">&#x2b;</span>&nbsp; Add Video</a>
+    </button><br/><br/>
+
+    {% if all_video %}
+        {% for video in all_video %}
+            <div style="width: 400px; height: 320px; float: left; margin-left: 40px; margin-top: 20px; background: white;">
+            <video   style="margin-top: -40px;" width="400" height="300" src="{{ video.video.url }}" controls></video>
+                <h4 class="album">{{ video.album.artist }}-{{ video.video_title }}</h4>
+            </div>
+        {% endfor %}
+
+        <div class="pagination">
+                <span class="step-links">
+                    {% if all_video.has_previous %}
+                        <a href="?{{ page_request_var }}={{ all_video.first_page_number }}
+                                   {% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">
+                            <strong>&laquo; first</strong>
+                        </a>
+                        <a href="?{{ page_request_var }}={{ all_video.previous_page_number }}
+                                    {% if request.GET.q%}&q={{ request.GET.q }}{% endif %}">
+                            <strong>prev</strong>
+                        </a>
+                    {% endif %}
+
+                    <span class="current">
+                        <strong>Page {{ all_video.number }} of {{ all_video.paginator.num_pages }}.</strong>
+                    </span>
+
+                    {% if all_video.has_next %}
+                        <a href="?{{ page_request_var }}={{ all_video.next_page_number }}
+                                    {% if request.GET.q%}&q={{ request.GET.q }}{% endif %}">
+                            <strong>next</strong>
+                        </a>
+                        <a href="?{{ page_request_var }}={{ all_video.paginator.num_pages }}
+                                    {% if request.GET.q%}&q={{ request.GET.q }}{% endif %}">
+                            <strong>last &raquo;</strong>
+                        </a>
+                    {% endif %}
+                </span>
+          </div>
+
+    {% else %}
+        <h3 style=" color: royalblue; font-family: 'Times New Roman'; margin:-3vw 0 0 2vw; font-size: 3vw;">
+            No video to display</h3>
+    {% endif %}
+{% endblock  %}

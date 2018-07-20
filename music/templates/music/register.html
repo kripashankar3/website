@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title%}Mugen Login/Register{% endblock %}</title>
+
+{% load  staticfiles %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"  type="text/css" href="{% static 'music/style.css' %}"/>
+</head>
+
+<body>
+    <div id="home">
+        <h1 class="title">Mugen Player</h1>
+        <p class="quote">Infinite ways to express your feelings</p><br>
+        <p class="info">Welcome to the Mugen Player!!!!Are u tired of downloading your</p>
+        <p class="info">favorite songs and music videos one by one? Then U are at the </p>
+        <p class="info">right place. Mugen Player is a platform that lets u listen, add </p>
+        <p class="info">and download ur favorite music in a one place and u can also </p>
+        <p class="info">download and listen to ur friends playlist via online service!!!!!</p>
+    </div>
+
+       <div class="container-fluid">
+           <div class="col-sm-4 col-lg-offset-8" >
+               <div class="panel panel-default">
+                   <div class="panel-body">
+                       {% if error_message %}
+                           <p><strong>{{ error_message }}</strong></p>
+                       {% endif %}
+                       <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                           {% csrf_token %}
+                           {% include 'music/form-template.html' %}
+                           <div class="form-group">
+                               <div class="col-sm-offset-4 col-sm-8">
+                                   <button type="submit" class="btn btn-success">Submit</button>&nbsp;
+                                     <a href="{% url 'music:login' %}" class="link">Already a member? Login </a>
+                               </div>
+                           </div>
+                       </form>
+                   </div>
+               </div>
+           </div>
+       </div>
+</body>

@@ -1,0 +1,73 @@
+{% extends 'music/base.html' %}
+
+{% block title%}Songs{% endblock %}
+{% block body %}
+        <div id="song_page">
+              <button class="btn btn-sm btn-primary" id="song_btn">
+                 <a href="{% url 'music:add-song'%}" style="color: white;" class="add_btn">
+                     <span class="glyphicon">&#x2b;</span>&nbsp; Add Song
+                 </a>
+              </button><br/>
+
+            <div>
+               <p class="heading">Songs</p>
+            </div><br/>
+             <div>
+               <p class="border"></p>
+            </div><br/><br/>
+
+           {% if all_song %}
+            {% for song in all_song %}
+               <ul>
+                 <li>
+                   <h4 class="song_title"><strong>Track: </strong>{{ song.song_title }}
+                       <a href="{% url 'music:detail' song.album.id %}"><h4 class="album"><strong>Album: </strong>{{ song.album }}</h4></a>
+                     <audio  id="player_1" src="{{ song.audio.url }}" controls></audio>
+                   </h4>
+                 </li>
+                 <div class="row-fluid"><br><br>
+                    <div class="col-md-3 col-lg-offset-8">
+                        <div class="song_logo">
+                            <img src="{{song.album_logo.url }}" class="img-responsive">
+                        </div>
+                    </div>
+                 </div>
+               </ul>
+            {% endfor %}
+
+               <div class="pagination">
+                <span class="step-links">
+                    {% if all_song.has_previous %}
+                        <a href="?{{ page_request_var }}={{ all_song.first_page_number }}
+                                   {% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">
+                            <strong>&laquo; first</strong>
+                        </a>
+                        <a href="?{{ page_request_var }}={{ all_song.previous_page_number }}
+                                    {% if request.GET.q%}&q={{ request.GET.q }}{% endif %}">
+                            <strong>prev</strong>
+                        </a>
+                    {% endif %}
+
+                    <span class="current">
+                        <strong>Page {{ all_song.number }} of {{ all_song.paginator.num_pages }}.</strong>
+                    </span>
+
+                    {% if all_song.has_next %}
+                        <a href="?{{ page_request_var }}={{ all_song.next_page_number }}
+                                    {% if request.GET.q%}&q={{ request.GET.q }}{% endif %}">
+                            <strong>next</strong>
+                        </a>
+                        <a href="?{{ page_request_var }}={{ all_song.paginator.num_pages }}
+                                    {% if request.GET.q%}&q={{ request.GET.q }}{% endif %}">
+                            <strong>last &raquo;</strong>
+                        </a>
+                    {% endif %}
+                </span>
+                </div>
+
+           </div>
+
+        {% else %}
+            <h3 class="error_msg">No Song to display</h3>
+        {% endif %}
+{% endblock  %}

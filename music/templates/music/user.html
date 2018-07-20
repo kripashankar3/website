@@ -1,0 +1,21 @@
+{% extends 'music/base.html' %}
+{% block title%}Profile{% endblock %}
+
+{% block body %}
+
+{% if error_message %}
+  <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+    <div id="user_profile">
+       <div class="col-sm-5 ">
+           <div class="thumbnail">
+               <!--- Album Logo-->
+               <img src="{{ user.photo }}"  class="user_pic">
+               <div class="caption">
+                   <h2 class="title">{{ user.username }}</h2>
+               </div>
+           </div>
+       </div>
+    </div>
+{% endblock %}

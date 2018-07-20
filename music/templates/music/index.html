@@ -1,0 +1,73 @@
+{% extends 'music/base.html' %}
+
+{% block body %}
+
+    <div class="row-fluid">
+        {% if all_album %}
+        {% for album in all_album %}
+
+          <div class="col-md-4 col-sm-2" >
+             <div class="thumbnail">
+                 <!--- Album Logo-->
+                  <a href="{% url 'music:detail' album.id %}">
+                      <img src="{{ album.album_logo.url }}" class="img-responsive"/>
+                  </a>
+                <div class="caption">
+                   <h2 class="title">{{ album.album_title }}</h2>
+                    <p class="details">{{ album.artist }}</p>
+                    <p class="details">{{ album.genre }}</p>
+                    <!--details-->
+                    <a href="{% url 'music:detail' album.id %}" class="btn btn-primary btn-sm">Details</a>
+
+                    <!--Delete-->
+                    <form action="{% url 'music:delete-album' album.id %}" method="post" style="display: inline-block">
+                       {% csrf_token %}
+                        <input type="hidden" name="album_id" value="{{ album.id }}"/>
+                        <button type="submit" class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button>
+                    </form>
+                    <!--Edit-->
+                    <a href="{% url 'music:update-album' album.id %}" class="btn btn-success btn-sm">
+                         <span class="glyphicon glyphicon-edit"></span>
+                    </a>
+
+                </div>
+             </div>
+          </div>
+        {% endfor %}
+            <!--<div class="pagination">
+                <span class="step-links">
+                    {% if all_album.has_previous %}
+                        <a href="?{{ page_request_var }}={{ all_album.first_page_number }}
+                                   {% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">
+                            <strong>&laquo; first</strong>
+                        </a>
+                        <a href="?{{ page_request_var }}={{ all_album.previous_page_number }}
+                                    {% if request.GET.q%}&q={{ request.GET.q }}{% endif %}">
+                            <strong>prev</strong>
+                        </a>
+                    {% endif %}
+
+                    <span class="current">
+                        <strong>Page {{ all_album.number }} of {{ all_album.paginator.num_pages }}.</strong>
+                    </span>
+
+                    {% if all_album.has_next %}
+                        <a href="?{{ page_request_var }}={{ all_album.next_page_number }}
+                                    {% if request.GET.q%}&q={{ request.GET.q }}{% endif %}">
+                            <strong>next</strong>
+                        </a>
+                        <a href="?{{ page_request_var }}={{ all_album.paginator.num_pages }}
+                                    {% if request.GET.q%}&q={{ request.GET.q }}{% endif %}">
+                            <strong>last &raquo;</strong>
+                        </a>
+                    {% endif %}
+                </span>
+          </div>-->
+
+        {% else %}
+            <h3 class="error_msg">No Album to display</h3>
+        {% endif %}
+    </div>
+{% endblock  %}
